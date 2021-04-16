@@ -17,12 +17,13 @@ describe('Employee', () => {
 describe('Employee', () => {
     it('should return the id of the employee', () => {
         //Arrange
-        const id = "1";
         const name = "Jenny";
+        const email = "jenny@gmail.com";
+
         //Act
-        const employee = new Employee(name, id);
+        const employee = new Employee(name, email);
         //Assert
-        expect(employee.id).toEqual('1')
+        expect(employee.email).toEqual('jenny@gmail.com')
     })
 
 })
@@ -31,13 +32,29 @@ describe('Employee', () => {
 
     it('should return the email of the employee', () => {
         //Arrange
-        const id = "1";
         const name = "Jenny";
         const email = "jenny@gmail.com";
+        const id = "1";
         //Act
-        const employee = new Employee(name, id, email);
+        const employee = new Employee(name, email, id);
         //Assert
-        expect(employee.email).toEqual('jenny@gmail.com')
+        expect(employee.id).toEqual('1')
     })
 
 })
+
+// describe('Employee', () => {
+
+//     it('should return the email of the employee', () => {
+//         //Arrange
+//         const name = "Jenny";
+//         const email = "jenny@gmail.com";
+//         const id = "1";
+//         const role = "Employee"
+//             //Act
+//         const employee = new Employee(name, email, id, role);
+//         //Assert
+//         expect(employee.role).toEqual('Employee')
+//     })
+
+// })

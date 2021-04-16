@@ -15,12 +15,12 @@ describe('Intern', () => {
 describe('Intern', () => {
     it('should return the id of the intern', () => {
         //Arrange
-        const id = "1";
         const name = "Jenny";
+        const email = "jenny@gmail.com";
         //Act
-        const intern = new Intern(name, id);
+        const intern = new Intern(name, email);
         //Assert
-        expect(intern.id).toEqual('1')
+        expect(intern.email).toEqual('jenny@gmail.com')
     })
 
 })
@@ -29,13 +29,31 @@ describe('Intern', () => {
 
     it('should return the email of the intern', () => {
         //Arrange
-        const id = "1";
         const name = "Jenny";
         const email = "jenny@gmail.com";
+        const id = "1";
         //Act
-        const intern = new Intern(name, id, email);
+        const intern = new Intern(name, email, id);
         //Assert
-        expect(intern.email).toEqual('jenny@gmail.com')
+        expect(intern.id).toEqual('1')
+    })
+
+})
+
+describe('intern', () => {
+
+    it('should return the role of the intern', () => {
+        //Arrange
+        const name = "Jenny";
+        const email = "jenny@gmail.com";
+        const id = "1";
+        const school = "UC Riverside";
+
+        const role = "Intern";
+        //Act
+        const intern = new Intern(name, email, id, school, role);
+        //Assert
+        expect(intern.role).toEqual('Intern')
     })
 
 })
@@ -44,12 +62,13 @@ describe('intern', () => {
 
     it('should return the school of the intern', () => {
         //Arrange
-        const id = "1";
         const name = "Jenny";
         const email = "jenny@gmail.com";
+        const id = "1";
         const school = "UC Riverside";
+
         //Act
-        const intern = new Intern(name, id, email, school);
+        const intern = new Intern(name, email, id, school);
         //Assert
         expect(intern.school).toEqual('UC Riverside')
     })

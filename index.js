@@ -4,6 +4,7 @@ const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const createHtmlPage = require('./createHtmlPage');
 
 
 // function initiates the application
@@ -11,8 +12,11 @@ appStart = () => {
     managerInfo();
 };
 
+// empty array that will hold all the team member data
 teamMemberArray = [];
 
+
+// get user input for manager employee
 function managerInfo() {
     inquirer.prompt([{
             type: 'input',
@@ -38,10 +42,12 @@ function managerInfo() {
         let manager = new Manager(answers.nameOfManager, answers.emailOfManager, answers.idOfManager, answers.officeNumOfManager, "Manager")
         teamMemberArray.push(manager)
         console.log(teamMemberArray);
-        // next();
+        next();
 
     })
 }
+
+// get user input for engineer employee
 
 function engineerInfo() {
     inquirer.prompt([{
@@ -68,10 +74,12 @@ function engineerInfo() {
         let engineer = new Engineer(answers.nameOfEngineer, answers.emailOfEngineer, answers.idOfEngineer, answers.githubOfEngineer, "Engineer")
         teamMemberArray.push(engineer)
         console.log(teamMemberArray);
-        // next();
+        next();
 
     })
 }
+
+// get user input for intern employee
 
 function internInfo() {
     inquirer.prompt([{
@@ -98,26 +106,40 @@ function internInfo() {
         let intern = new Intern(answers.nameOfIntern, answers.emailOfIntern, answers.idOfIntern, answers.schoolOfIntern, "Intern")
         teamMemberArray.push(intern)
         console.log(teamMemberArray);
-        // next();
+        next();
 
     })
 }
 
 
 
-// next() {
-//     inquirer.prompt({
-//         type: 'list',
-//         name: "next",
-//         message: "Choose your team from the following:",
-//         choices: [
-//             "Manager",
-//             "Engineer",
-//             "Intern",
-//             "Done"
+function next() {
+    inquirer.prompt({
+        type: 'list',
+        name: "next",
+        message: "Choose your team from the following:",
+        choices: [
+            "Manager",
+            "Engineer",
+            "Intern",
+            "Done"
 
-//         ]
-//     })
-// }
+        ]
+    }).then((choice) => {
+        if (choice.next === "Manager") {
+            managerInfo();
+        } else if (choice.next === "Engineer") {
+            engineerInfo();
+        } else if (choice.next === "Intern") {
+            internInfo();
+        } else {
+            const buildHtml = createHtmlPage(teamMemberArray);
+
+            fs.writeFile('my-team.html', buildHtml, (err) => {
+                err ? console.log(err) : console.log('HTML created successfully!')
+            })
+        }
+    })
+}
 
 appStart();
