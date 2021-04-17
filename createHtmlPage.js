@@ -8,6 +8,7 @@ function createHtmlPage(teamMemberArray) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <title>My Team</title>
 </head>
 
@@ -18,31 +19,34 @@ function createHtmlPage(teamMemberArray) {
         <h1 id="name" class="text-left p-2 mx-4 text-2xl">${teamMemberArray[0].name}</h1>
         <h1 id="role" class="text-left p-2 mx-4 text-2xl">${teamMemberArray[0].role}</h1>
         <ul class="list-none bg-white text-gray-500 p-10 border-2 border-gray-500 m-3">
-            <li id="id">Id:${teamMemberArray[0].id}</li>
-            <li id="email">Email:${teamMemberArray[0].email}</li>
-            <li id="more">Phone#:${teamMemberArray[0].officeNumber}</li>
+            <li id="id">Id: ${teamMemberArray[0].id}</li>
+            <li id="email"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=${teamMemberArray[0].email}"/a>Email: ${teamMemberArray[0].email}</li>
+            <li id="more">Phone#: ${teamMemberArray[0].officeNumber}</li>
          </ul>
         </div>`
+
+
 
     for (let i = 1; i < teamMemberArray.length; i++) {
         html += ` <div class="employee-card w-72 border-2 bg-blue-600 text-white rounded-md my-10 mx-5">
     <h1 id="name" class="text-left p-2 mx-4 text-2xl">${teamMemberArray[i].name}</h1>
     <h1 id="role" class="text-left p-2 mx-4 text-2xl">${teamMemberArray[i].role}</h1>
     <ul class="list-none bg-white text-gray-500 p-10 border-2 border-gray-500 m-3">
-        <li id="id">Id:${teamMemberArray[i].id}</li>
-        <li id="email">Email:${teamMemberArray[i].email}</li>`
+        <li id="id">Id: ${teamMemberArray[i].id}</li>
+        <li id="email">Email: ${teamMemberArray[i].email}</li>`
 
         if (teamMemberArray[i].github !== "" && teamMemberArray[i].github !== undefined) {
-            html += `<li id="github">GitHub:${teamMemberArray[i].github}</li>
+            html += `<li id="github"><a href="https://github.com/${teamMemberArray[i].github}"/a>GitHub: ${teamMemberArray[i].github}</li>
             </ul>
             </div>`
 
         } else if (teamMemberArray[i].school !== "" && teamMemberArray[i].school !== undefined) {
-            html += `<li id="school">School:${teamMemberArray[i].school}</li>
+            html += `<li id="school">School: ${teamMemberArray[i].school}</li>
             </ul>
             </div>`
         } else {
-            html += ``
+            html += `<li id="more">Phone#: ${teamMemberArray[i].officeNumber}</li></ul>
+            </div>`
         }
     }
 
@@ -53,6 +57,10 @@ function createHtmlPage(teamMemberArray) {
 </html>`
 
     return html
+
+
+
+
 
 };
 
