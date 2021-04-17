@@ -20,7 +20,7 @@ function createHtmlPage(teamMemberArray) {
         <h1 id="role" class="text-left p-2 mx-4 text-2xl">${teamMemberArray[0].role}</h1>
         <ul class="list-none bg-white text-gray-500 p-10 border-2 border-gray-500 m-3">
             <li id="id">Id: ${teamMemberArray[0].id}</li>
-            <li id="email"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=${teamMemberArray[0].email}"/a>Email: ${teamMemberArray[0].email}</li>
+            <li id="email"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=${teamMemberArray[0].email}">Email: ${teamMemberArray[0].email}</a></li>
             <li id="more">Phone#: ${teamMemberArray[0].officeNumber}</li>
          </ul>
         </div>`
@@ -36,7 +36,7 @@ function createHtmlPage(teamMemberArray) {
         <li id="email">Email: ${teamMemberArray[i].email}</li>`
 
         if (teamMemberArray[i].github !== "" && teamMemberArray[i].github !== undefined) {
-            html += `<li id="github"><a href="https://github.com/${teamMemberArray[i].github}"/a>GitHub: ${teamMemberArray[i].github}</li>
+            html += `<li id="github"><a href="https://github.com/${teamMemberArray[i].github}">GitHub: ${teamMemberArray[i].github}</a></li>
             </ul>
             </div>`
 
