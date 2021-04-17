@@ -22,7 +22,7 @@ node index.js
 
 # Images
 
-![My Team](Team-Profile-Generator/my-team.png)
+![My Team](/my-team.png)
 
 # License
 
